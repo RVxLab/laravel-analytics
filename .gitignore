@@ -1,6 +1,7 @@
 vendor/
 .direnv/
 .devenv/
+build/
 composer.lock
 devenv.lock
 .devenv.flake.nix
