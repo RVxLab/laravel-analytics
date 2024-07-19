@@ -1,0 +1,75 @@
+{
+    "name": "rvxlab/laravel-analytics",
+    "description": "Simple and lightweight analytics and tag manager for Laravel",
+    "license": "MIT",
+    "type": "library",
+    "version": "0.0.1",
+    "authors": [
+        {
+            "name": "RVxLab",
+            "email": "code@rvx.works"
+        }
+    ],
+    "require": {
+        "php": "^8.2",
+        "illuminate/contracts": "^10 || ^11",
+        "illuminate/support": "^10 || ^11"
+    },
+    "require-dev": {
+        "ergebnis/composer-normalize": "^2.43",
+        "larastan/larastan": "^2.7",
+        "laravel/pint": "^1.0",
+        "orchestra/testbench": "^8.16 || ^9.0",
+        "pestphp/pest": "^2.0",
+        "pestphp/pest-plugin-laravel": "^2.0",
+        "phpstan/extension-installer": "^1.4"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "autoload": {
+        "psr-4": {
+            "RVxLab\\Analytics\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Workbench\\App\\": "workbench/app/",
+            "Workbench\\Database\\Factories\\": "workbench/database/factories/",
+            "Workbench\\Database\\Seeders\\": "workbench/database/seeders/"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "ergebnis/composer-normalize": true,
+            "pestphp/pest-plugin": true,
+            "phpstan/extension-installer": true
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "RVxLab\\Analytics\\AnalyticsServiceProvider"
+            ]
+        }
+    },
+    "scripts": {
+        "post-autoload-dump": [
+            "@clear",
+            "@prepare",
+            "@composer discover"
+        ],
+        "analyse": "./vendor/bin/phpstan analyse",
+        "build": "@php vendor/bin/testbench workbench:build --ansi",
+        "clear": "@php vendor/bin/testbench package:purge-skeleton --ansi",
+        "discover": "@php ./vendor/bin/testbench package:discover",
+        "lint": "./vendor/bin/pint",
+        "prepare": "@php vendor/bin/testbench package:discover --ansi",
+        "serve": [
+            "Composer\\Config::disableProcessTimeout",
+            "@build",
+            "@php vendor/bin/testbench serve"
+        ],
+        "test": "./vendor/bin/pest"
+    },
+    "$schema": "https://getcomposer.org/schema.json"
+}

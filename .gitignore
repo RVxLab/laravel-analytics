@@ -1,0 +1,7 @@
+vendor/
+.direnv/
+.devenv/
+composer.lock
+devenv.lock
+.devenv.flake.nix
+.pre-commit-config.yaml
