@@ -13,7 +13,9 @@ class RecordPageView
     /** @param \Closure(Request): Response $next */
     public function handle(Request $request, \Closure $next): mixed
     {
-        return tap($next($request), function () use ($request) {
+        $response = $next($request);
+
+        if ($request->isMethod('GET')) {
             rescue(fn () => AnalyticsEvent::query()->create([
                 'type' => 'pageview',
                 'data' => [
@@ -22,6 +24,8 @@ class RecordPageView
                 'user_agent' => $request->userAgent(),
                 'ip_address' => $request->ip(),
             ]));
-        });
+        }
+
+        return $response;
     }
 }

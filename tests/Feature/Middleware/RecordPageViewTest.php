@@ -7,7 +7,10 @@ use RVxLab\Analytics\Models\AnalyticsEvent;
 
 use function Pest\Laravel\assertDatabaseCount;
 use function Pest\Laravel\assertDatabaseEmpty;
+use function Pest\Laravel\delete;
 use function Pest\Laravel\get;
+use function Pest\Laravel\patch;
+use function Pest\Laravel\post;
 use function Pest\Laravel\withoutExceptionHandling;
 
 it('can record a page view', function () {
@@ -41,4 +44,14 @@ it('reports any thrown exceptions', function () {
     [$major, $minor] = array_map(intval(...), explode('.', app()->version()));
 
     return !($major >= 11 && $minor >= 4);
+});
+
+it('does not record page views on non-get routes', function () {
+    assertDatabaseEmpty(config('analytics.database.table_names.analytics_events'));
+
+    post('/');
+    patch('/');
+    delete('/');
+
+    assertDatabaseEmpty(config('analytics.database.table_names.analytics_events'));
 });

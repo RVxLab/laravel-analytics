@@ -35,7 +35,7 @@ abstract class TestCase extends BaseTestCase
      */
     protected function defineRoutes($router)
     {
-        $router->get('/', function () {
+        $router->any('/', function () {
             return 'Hello, world!';
         })->middleware(RecordPageView::class);
     }
