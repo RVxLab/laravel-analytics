@@ -6,4 +6,13 @@ namespace RVxLab\Analytics;
 
 use Illuminate\Support\ServiceProvider;
 
-class AnalyticsServiceProvider extends ServiceProvider {}
+class AnalyticsServiceProvider extends ServiceProvider
+{
+    public function register(): void
+    {
+        $this->mergeConfigFrom(
+            __DIR__ . '/../config/config.php',
+            'analytics',
+        );
+    }
+}
