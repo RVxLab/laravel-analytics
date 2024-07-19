@@ -14,7 +14,7 @@ class RecordPageView
     public function handle(Request $request, \Closure $next): mixed
     {
         return tap($next($request), function () use ($request) {
-            rescue(fn() => AnalyticsEvent::query()->create([
+            rescue(fn () => AnalyticsEvent::query()->create([
                 'type' => 'pageview',
                 'data' => [
                     'path' => $request->path(),

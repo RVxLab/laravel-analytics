@@ -21,14 +21,14 @@ it('can record a page view', function () {
 it('does not crash when adding a page view fails', function () {
     withoutExceptionHandling();
 
-    AnalyticsEvent::saving(fn() => throw new Exception('Whoops!'));
+    AnalyticsEvent::saving(fn () => throw new Exception('Whoops!'));
 
     get('/');
 })->throwsNoExceptions();
 
 it('reports any thrown exceptions', function () {
     Exceptions::fake();
-    AnalyticsEvent::saving(fn() => throw new Exception('Whoops!'));
+    AnalyticsEvent::saving(fn () => throw new Exception('Whoops!'));
 
     assertDatabaseEmpty(config('analytics.database.table_names.analytics_events'));
 
@@ -36,7 +36,7 @@ it('reports any thrown exceptions', function () {
 
     assertDatabaseEmpty(config('analytics.database.table_names.analytics_events'));
 
-    Exceptions::assertReported(fn(Exception $e) => $e->getMessage() === 'Whoops!');
+    Exceptions::assertReported(fn (Exception $e) => $e->getMessage() === 'Whoops!');
 })->skip(function () {
     [$major, $minor] = array_map(intval(...), explode('.', app()->version()));
 

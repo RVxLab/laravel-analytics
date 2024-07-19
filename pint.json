@@ -9,6 +9,10 @@
             "property": "single"
         },
         "phpdoc_single_line_var_spacing": true,
-        "phpdoc_var_without_name": true
+        "phpdoc_var_without_name": true,
+        "function_declaration": {
+            "closure_function_spacing": "one",
+            "closure_fn_spacing": "one"
+        }
     }
 }
