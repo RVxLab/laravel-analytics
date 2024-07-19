@@ -20,6 +20,7 @@ class AnalyticsEvent extends Eloquent\Model
         'id',
     ];
 
+    /** @var array{ data: 'json' } */
     protected $casts = [
         'data' => 'json',
     ];

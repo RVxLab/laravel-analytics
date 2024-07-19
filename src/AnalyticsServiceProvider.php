@@ -6,6 +6,7 @@ namespace RVxLab\Analytics;
 
 use Carbon\Carbon;
 use Illuminate\Support\ServiceProvider;
+use RuntimeException;
 
 class AnalyticsServiceProvider extends ServiceProvider
 {
@@ -52,7 +53,13 @@ class AnalyticsServiceProvider extends ServiceProvider
     {
         $now = Carbon::now();
 
-        $migrationFilesPublishes = array_reduce(glob(__DIR__ . '/../database/migrations/*.php'), function (array $migrationFiles, string $migrationFile) use ($now): array {
+        $files = glob(__DIR__ . '/../database/migrations/*.php');
+
+        if (false === $files) {
+            throw new RuntimeException('Could not find migrations using glob');
+        }
+
+        $migrationFilesPublishes = array_reduce($files, function (array $migrationFiles, string $migrationFile) use ($now): array {
             $migrationFileName = (string) pathinfo($migrationFile, PATHINFO_BASENAME);
 
             $migrationFiles[$migrationFile] = $this->generateMigrationFileName($migrationFileName, $now);
