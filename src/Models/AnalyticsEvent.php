@@ -20,6 +20,10 @@ class AnalyticsEvent extends Eloquent\Model
         'id',
     ];
 
+    protected $casts = [
+        'data' => 'json',
+    ];
+
     public function getConnectionName(): ?string
     {
         /** @var ?string */
@@ -37,10 +41,8 @@ class AnalyticsEvent extends Eloquent\Model
     }
 
     /** @return array{ data: 'json' } */
-    public function casts(): array
+    protected function casts(): array
     {
-        return [
-            'data' => 'json',
-        ];
+        return $this->casts;
     }
 }
