@@ -24,7 +24,8 @@
         "orchestra/testbench": "^8.16 || ^9.0",
         "pestphp/pest": "^2.0",
         "pestphp/pest-plugin-laravel": "^2.0",
-        "phpstan/extension-installer": "^1.4"
+        "phpstan/extension-installer": "^1.4",
+        "pestphp/pest-plugin-watch": "^2.1"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
