@@ -14,6 +14,7 @@
         "php": "^8.2",
         "illuminate/contracts": "^10 || ^11",
         "illuminate/database": "^10 || ^11",
+        "illuminate/http": "^10||^11",
         "illuminate/support": "^10 || ^11"
     },
     "require-dev": {
