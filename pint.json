@@ -2,6 +2,13 @@
     "preset": "per",
     "rules": {
         "declare_strict_types": true,
-        "strict_param": true
+        "strict_param": true,
+        "phpdoc_line_span": {
+            "const": "single",
+            "method": "single",
+            "property": "single"
+        },
+        "phpdoc_single_line_var_spacing": true,
+        "phpdoc_var_without_name": true
     }
 }
