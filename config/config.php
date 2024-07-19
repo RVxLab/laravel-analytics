@@ -15,7 +15,7 @@ return [
          * The names of the tables
          */
         'table_names' => [
-
+            'analytics_events' => 'analytics_events',
         ],
     ],
 ];
