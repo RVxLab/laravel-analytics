@@ -16,15 +16,18 @@ Install using Composer:
 composer require rvxlab/laravel-analytics
 ```
 
-**Optional**: Publish the migrations and config file. Unless you have a reason to do this, you should skip this.
+Publish and run the migrations:
 
 ```shell
-php artisan vendor:publish --tag="analytics-config" --tag="analytics-migrations"
-```
-Run the migrations:
+php artisan vendor:publish --tag="analytics-migrations"
 
-```shell
 php artisan migrate
+```
+
+**Optional**: Publish the config file:
+
+```shell
+php artisan vendor:publish --tag="analytics-config"
 ```
 
 ## Setting up

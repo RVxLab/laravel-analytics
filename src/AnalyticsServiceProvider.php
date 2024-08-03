@@ -19,7 +19,6 @@ class AnalyticsServiceProvider extends ServiceProvider
     {
         $this->publishConfig();
 
-        $this->loadMigrations();
         $this->publishMigrations();
     }
 
@@ -35,11 +34,6 @@ class AnalyticsServiceProvider extends ServiceProvider
             __DIR__ . '/../config/config.php',
             'analytics',
         );
-    }
-
-    private function loadMigrations(): void
-    {
-        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
     }
 
     private function publishConfig(): void
