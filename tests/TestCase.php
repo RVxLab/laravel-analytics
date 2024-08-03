@@ -60,6 +60,16 @@ abstract class TestCase extends BaseTestCase
     }
 
     /**
+     * Define database migrations.
+     *
+     * @return void
+     */
+    protected function defineDatabaseMigrations()
+    {
+        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
+    }
+
+    /**
        * Get the application timezone.
        *
        * @param  \Illuminate\Foundation\Application  $app
