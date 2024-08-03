@@ -22,7 +22,7 @@ class RecordPageView
                     'path' => $request->path(),
                 ],
                 'user_agent' => $request->userAgent(),
-                'ip_address' => $request->ip(),
+                'ip_address' => $request->getClientIp() ?? $request->ip(),
             ]));
         }
 
